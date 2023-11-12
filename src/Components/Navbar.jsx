@@ -18,9 +18,9 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className="flex items-center p-3 border-b">
+    <nav className="flex items-center p-3 px-10 border-b">
       <a href="/">
-        <h1 className="text-blue-500">Brand Name</h1>
+        <h1 className="text-blue-500 text-2xl">Skye-Shop</h1>
       </a>
       <button
         typeof="submit"
@@ -43,7 +43,7 @@ const Navbar = () => {
             <li key={index} className="ml-3">
               <Link
                 to={url}
-                className=" border-b hover:border-blue-400 hover:text-blue-500"
+                className="pb-2 border-b-2 hover:border-blue-400 hover:text-blue-500"
               >
                 <Icon className="inline mr-1" />
                 {title}

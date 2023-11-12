@@ -13,7 +13,7 @@ const Aside = () => {
   }, [isOpen]);
 
   return (
-    <aside className="border z-10 bg-blue-100 col-span-12 lg:block lg:col-span-3 p-2">
+    <aside className="border rounded z-10 bg-blue-100 col-span-12 lg:block lg:col-span-3 p-1 lg:p-4">
       <div className="flex justify-end p-1 border-2 lg:hidden">
         <button
           typeof="submit"

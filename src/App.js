@@ -8,8 +8,20 @@ import Layout from "./Pages/Layout";
 import User from "./Components/User";
 import Payment from "./Components/Payment";
 import ErrorPage from "./Pages/ErrorPage";
+import { useState } from "react";
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+
+  function addToCart(product) {
+    setCartItems([...cartItems, product]);
+  }
+
+  function removeFromCart(productId) {
+    let updatedCartItems = cartItems.filter((item) => item.id !== productId);
+    setCartItems(updatedCartItems);
+  }
+
   let myRoutes = createBrowserRouter([
     {
       path: "/",
@@ -22,11 +34,11 @@ function App() {
         },
         {
           path: "market", // this is the market page, where all products can be browsed through
-          element: <Market />,
+          element: <Market addToCart={addToCart} />,
         },
         {
           path: "cart",
-          element: <Cart />,
+          element: <Cart cartItems={cartItems} removeFromCart={removeFromCart}/>,
         },
         {
           path: "profile/",
@@ -49,6 +61,7 @@ function App() {
       ],
     },
   ]);
+
   return (
     <div className="App">
       <RouterProvider router={myRoutes} />
