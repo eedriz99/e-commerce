@@ -9,6 +9,7 @@ import User from "./Components/User";
 import Payment from "./Components/Payment";
 import ErrorPage from "./Pages/ErrorPage";
 import { useState } from "react";
+import Product from "./Pages/Product";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -30,11 +31,15 @@ function App() {
       children: [
         {
           index: true, //this is the home page of our app
-          element: <Home />,
+          element: <Home addToCart={addToCart}/>,
         },
         {
           path: "market", // this is the market page, where all products can be browsed through
           element: <Market addToCart={addToCart} />,
+        },
+        {
+          path: "product/:productId", // this is the market page, where all products can be browsed through
+          element: <Product addToCart={addToCart} />,
         },
         {
           path: "cart",

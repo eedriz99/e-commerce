@@ -7,6 +7,7 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -19,9 +20,12 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center p-3 px-10 border-b">
-      <a href="/">
-        <h1 className="text-blue-500 text-2xl">Skye-Shop</h1>
-      </a>
+      <h1 className="text-blue-500 text-2xl">
+        <Link to="/" className="inline-block">
+          Skye-Shop
+        </Link>
+      </h1>
+
       <button
         typeof="submit"
         className="p-2 border ml-auto lg:hidden"
