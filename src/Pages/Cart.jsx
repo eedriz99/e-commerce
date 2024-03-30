@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import CartCard from "../Components/CartCard";
 import illustration from "../Images/Illustration/Ecommerce checkout laptop-rafiki.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Cart = ({ cartItems, removeFromCart }) => {
+const Cart = () => {
   let [emptyCart, setEmptyCart] = useState(false);
+
+  const cartItems = useSelector((state) => state.cart.products);
 
   useEffect(() => {
     if (cartItems.length === 0) {
@@ -53,13 +56,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
               ?
             </p>
           ) : (
-            cartItems.map((item) => (
-              <CartCard
-                key={item.id}
-                itemData={item}
-                removeFromCart={removeFromCart}
-              />
-            ))
+            cartItems.map((item) => <CartCard key={item.id} itemData={item} />)
           )}
         </div>
       </div>
@@ -94,7 +91,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
           </p>
           <button
             className=" px-2 py-1 w-full bg-green-500 text-white border-2 border-green-600 rounded"
-            onClick={() => console.log({ ...cartItems, totalCost })}
+            onClick={() => console.log({ cartItems, totalCost })}
           >
             {" "}
             Continue to checkout

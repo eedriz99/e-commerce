@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useDataFetch from "../Hooks/useDataFetch";
 import ProductSkeletonLoader from "../Loaders/ProductSkeletonLoader";
+import AddToCartButton from "../Components/AddToCartButton";
 
-function Product({ addToCart }) {
+function Product() {
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let { productId } = useParams();
@@ -32,24 +33,21 @@ function Product({ addToCart }) {
           className="max-h-full max-w-full m-auto"
         />
       </div>
-      <div className="h-fit lg:h-[70vh] rounded border border-blue-400 p-8 rounded relative col-span-12 lg:col-span-7">
+      <div className="h-fit lg:h-[70vh] border border-blue-400 p-8 rounded relative col-span-12 lg:col-span-7">
         <div className="mb-8">
           <h1 className="w-[100%] text-2xl font-bold">{product.title}</h1>
           <p className="w-[100%] mt-5">{product.description}</p>
 
           <div className="mt-5 flex justify-between">
-            {/* <span className="text-2xl font-semibold">{product.rating.rate}</span> */}
+            <span className="text-2xl font-semibold">
+              {product.rating.rate}
+            </span>
             <span className="text-2xl font-semibold">$ {product.price}</span>
           </div>
         </div>
-        <button
-          onClick={() => {
-            addToCart(product);
-          }}
-          className="rounded p-2 w-[80%] absolute bottom-5 left-[10%] bg-blue-400 text-gray-100 border border-blue-500 hover:text-blue-400 hover:bg-gray-100"
-        >
-          Add to cart
-        </button>
+        <div className="w-[80%] absolute bottom-5 left-[10%]">
+          <AddToCartButton productData={product} />
+        </div>
       </div>
     </main>
   );

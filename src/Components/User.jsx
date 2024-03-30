@@ -22,29 +22,16 @@ const User = () => {
     <div>
       <h1>My Profile</h1>
       <div>
-        {/* <input
-          type="text"
-          name="firstName"
-          id="firstName"
-          placeholder="First name"
-        />
-        <input
-          type="text"
-          name="lastName"
-          id="lastName"
-          placeholder="Last name"
-        />
-        <input type="tel" name="phone" id="phone" placeholder="Phone number" />
-        <input type="text" name="address" id="address" placeholder="Address" />
-        <input type="text" name="town" id="town" placeholder="Town/City" />
-        <input type="text" name="state" id="state" placeholder="State/County" /> */}
+        {[
+          { name: "firstName", type: "text", label: "First Name" },
+          { name: "lastName", type: "text", label: "Last Name" },
+          { name: "email", type: "email", label: "Email" },
+          { name: "phone", type: "tel", label: "Phone Number" },
 
-        <Input />
-        {/* <select name="country" id="country" value={countries}>
-          {countries.map((country) => (
-            <option value={country}>{country}</option>
-          ))}
-        </select> */}
+          // {}
+        ].map((input) => (
+          <Input key={input.name} {...input} />
+        ))}
       </div>
     </div>
   );

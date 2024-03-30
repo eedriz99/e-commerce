@@ -22,7 +22,7 @@ async function fetchData(source, setter, setIsLoading) {
     let response = await axios.get(source);
     setter(response.data);
   } catch (error) {
-    console.log("could ot fetch data successfully cause ", error);
+    console.log("could not fetch data successfully cause: ", error);
   } finally {
     setIsLoading(false);
   }

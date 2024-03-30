@@ -1,7 +1,9 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../Redux/cartState";
 
-const CartCard = ({ itemData, removeFromCart }) => {
-  
+const CartCard = ({ itemData }) => {
+  const dispatch = useDispatch()
   return (
     <div className="flex w-full h-[100px] border p-1 my-2 rounded justify-between items-center">
       <div className="w-[15%] h-20 mr-4 relative">
@@ -21,7 +23,7 @@ const CartCard = ({ itemData, removeFromCart }) => {
       <div className="w-[20%] text-center">
         <span className="text-3xl block cursor-default">${itemData.price}</span>
         <button
-          onClick={() => removeFromCart(itemData.id)}
+          onClick={() => dispatch(removeFromCart(itemData.id))}
           className="bg-red-500 border-2 border-red-600 text-white text-xs py-1 px-2 rounded hover:bg-white hover:text-red-500"
         >
           {" "}

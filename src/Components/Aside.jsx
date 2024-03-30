@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineFilter } from "react-icons/ai";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import useDataFetch from "../Hooks/useDataFetch";
+import Input from "./Input";
 
 const Aside = () => {
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = useRef(null);
+  const [category, setCategory] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useDataFetch(
+    " https://fakestoreapi.com/products/categories ",
+    setCategory,
+    setIsLoading
+  );
+  console.log(category);
 
   useEffect(() => {
     isOpen
@@ -23,27 +34,31 @@ const Aside = () => {
           <AiOutlineFilter className="mt-1 mr-1" />
         </button>
       </div>
-      <div
-        ref={btnRef}
-        className="hidden lg:block"
-      >
+      <div ref={btnRef} className="hidden lg:block">
+        {/* https://fakestoreapi.com/products/categories */}
         <div>
           <h3 className="text-blue-700">Cartegory: </h3>
 
-          <ul className="p-3 ml-2">
-            {[
+          {/* <ul className="p-3 ml-2"> */}
+            {
+              /* {[
               ["Appliances", "/appliances"],
               ["Computer and accessories", "/computer"],
               ["Electronics", "/electronics"],
               ["Fashion", "/fashion"],
               ["Gardening tools", "/gardening"],
               ["Grocery", "/grocery"],
-            ].map(([title, url], index) => (
-              <li key={index}>
-                <Link to={url}>{title}</Link>
-              </li>
-            ))}
-          </ul>
+            ]*/
+              category.map((name, index) => (
+                // <li key={index}>
+                //   {/* <Link to="">{title}</Link> */}
+                //   <Input name={name} typeOf="radio" label={name} />
+                // </li>
+
+                <button key={index} className="block mx-3 my-2 w-full text-left">{name}</button>
+              ))
+            }
+          {/* </ul> */}
         </div>
         <div>
           <h3 className="flex text-blue-700">
